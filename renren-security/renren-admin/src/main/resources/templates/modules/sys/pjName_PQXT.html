@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>汽车配件详情管理</title>
+    <#include "/header.html">
+        </head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.title" @keyup.enter="query" placeholder="配件名称">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+                <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+                <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">id</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.id" placeholder="id"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件类型</div>
+                <div class="col-sm-10">
+                    <input id="pjType" value="排气系统配件" class="form-control"  readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件名称</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.title" placeholder="配件名称"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件价格</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.price" placeholder="配件价格"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件库存</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.inventory" placeholder="配件库存"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件生产时间</div>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" v-model="pjName.scTime" placeholder="配件生产时间"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">配件厂家</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.manufacturers" placeholder="配件厂家"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">备注说明</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="pjName.bz" placeholder="备注说明"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/js/modules/sys/pjName_PQXT.js?_${.now?long}"></script>
+<script type="text/javascript">
+</script>
+
+
+</body>
+</html>
